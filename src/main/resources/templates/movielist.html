@@ -1,10 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Moviedatabase - Movies</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
+
+
+<h1>Nile's Top 10 Movies</h1>
+
+
+<div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+    <h3 th:inline="text">Welcome to Moviedatabase [[${#httpServletRequest.remoteUser}]]</h3>
+</div>
+<div class="col-md-4" style="padding:20px 0">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out" class="btn btn-danger"/>
+    </form>
+</div>
+
+
+<table class="table table-striped">
+
+    <!--
+    this.title = title;
+        this.director = director;
+        this.description = description;
+        this.year = year;
+        this.category = category;
+    -->
+
+    <tr>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Description</th>
+        <th>Year</th>
+        <th>Category</th>
+        <th sec:authorize="hasRole('ADMIN')"> </th>
+
+    </tr>
+
+    <tr th:each="movie : ${movies}">
+
+        <td th:text="${movie.title}">title</td>
+        <td th:text="${movie.director}">director</td>
+        <td th:text="${movie.description}">year</td>
+
+        <td th:text="${movie.category.name}">category</td>
+        <td sec:authorize="hasAuthority('ADMIN')">
+
+        <td><a th:href="@{/deletemovie/{id}(id=${movie.id})}">Delete</a></td>
+        <td><a th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
+    </tr>
+
+
+</table>
+
+
+
+<a href="/newmovie" class="btn btn-success">New Movie</a>
+
+
 
 </body>
 </html>

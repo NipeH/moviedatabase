@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Movieform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+
 </head>
 <body>
+
+<!--
+    this.title = title;
+        this.director = director;
+        this.description = description;
+        this.year = year;
+        this.category = category;
+    -->
+
+
+<h1>Add new movie to the database</h1>
+
+<form action ="#" th:action="@{/newmovie}" th:object="${movie}" method="post">
+
+
+    <p>title: <input type="text" th:field="${movie.title}"/></p>
+    <p>author: <input type="text" th:field="${movie.director}"/></p>
+    <p>year: <input type="text" th:field="${movie.description}"/></p>
+    <p>isbn: <input type="text" th:field="${movie.year}"/></p>
+
+
+
+    <label for="categorylist">Category</label>
+    <select id="categorylist" th:field="*{category}"
+            class="form-control">
+        <option th:each="category: ${categories}"
+                th:value="${category.categoryid}"
+                th:text="${category.name}">
+
+        </option>
+
+    </select>
+
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Reset"/>
+</form>
 
 </body>
 </html>
