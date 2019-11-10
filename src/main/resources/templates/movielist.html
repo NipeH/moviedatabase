@@ -52,9 +52,10 @@
 
     <tr th:each="movie : ${movies}">
 
-        <td th:text="${movie.title}">title</td>
-        <td th:text="${movie.director}">director</td>
-        <td th:text="${movie.description}">year</td>
+        <td th:text="${movie.title}">Title</td>
+        <td th:text="${movie.director}">Director</td>
+        <td th:text="${movie.description}">Description</td>
+        <td th:text="${movie.year}">Year</td>
 
         <td th:text="${movie.category.name}">category</td>
         <td sec:authorize="hasAuthority('ADMIN')">
