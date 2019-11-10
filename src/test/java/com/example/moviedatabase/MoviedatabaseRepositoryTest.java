@@ -32,7 +32,7 @@ public class MoviedatabaseRepositoryTest {
     //Create new movie
     @Test
     public void createNewBook(){
-        Movie movie = new Movie("Asd", "Nakki Kastikemäki", "testihommaa asdasd" , 2013 , new Category("Asd"));
+        Movie movie = new Movie("Asd", "Nakki Kastikemäki", "Nakki Matti", "testihommaa asdasd" , 2013 , new Category("Asd"));
         repository.save(movie);
         assertThat(movie.getId()).isNotNull();
     }

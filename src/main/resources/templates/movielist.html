@@ -21,28 +21,34 @@
 
 </div>
 <div class="col-md-4">
-    <h3 th:inline="text">Welcome to Moviedatabase [[${#httpServletRequest.remoteUser}]]</h3>
+    <h3 th:inline="text">Welcome to the Moviedatabase, [[${#httpServletRequest.remoteUser}]] !</h3>
 </div>
 <div class="col-md-4" style="padding:20px 0">
+
+
+    <td sec:authorize="hasAuthority('USER')"><a>Only Admin can add or delete movies.</a></td>
+
+</div>
+</br>
+</br>
+
+
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Sign Out" class="btn btn-danger"/>
     </form>
 </div>
+</br>
+</br>
+</br>
+</br>
 
 
 <table class="table table-striped">
 
-    <!--
-    this.title = title;
-        this.director = director;
-        this.description = description;
-        this.year = year;
-        this.category = category;
-    -->
-
     <tr>
         <th>Title</th>
         <th>Director</th>
+        <th>Actor</th>
         <th>Description</th>
         <th>Year</th>
         <th>Category</th>
@@ -54,22 +60,18 @@
 
         <td th:text="${movie.title}">Title</td>
         <td th:text="${movie.director}">Director</td>
+        <td th:text="${movie.actor}">Actor</td>
         <td th:text="${movie.description}">Description</td>
         <td th:text="${movie.year}">Year</td>
-
         <td th:text="${movie.category.name}">category</td>
-        <td sec:authorize="hasAuthority('ADMIN')">
+        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${movie.id})}" class="btn btn-danger">Delete</a></td>
 
-        <td><a th:href="@{/deletemovie/{id}(id=${movie.id})}">Delete</a></td>
-        <td><a th:href="@{/edit/{id}(id=${movie.id})}">Edit</a></td>
     </tr>
 
 
 </table>
 
-
-
-<a href="/newmovie" class="btn btn-success">New Movie</a>
+<td sec:authorize="hasAuthority('ADMIN')"><a href="/newmovie" class="btn btn-success">New Movie</a></td>
 
 
 

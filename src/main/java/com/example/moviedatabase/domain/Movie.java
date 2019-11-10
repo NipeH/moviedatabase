@@ -19,7 +19,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title, director, description;
+    private String title, director, description, actor;
     private int year;
 
     //category
@@ -30,12 +30,13 @@ public class Movie {
 
     public Movie(){}
 
-    public Movie(String title, String director, String description, int year, Category category) {
+    public Movie(String title, String director, String actor, String description, int year, Category category) {
 
         super();
 
         this.title = title;
         this.director = director;
+        this.actor = actor;
         this.description = description;
         this.year = year;
         this.category = category;
@@ -63,6 +64,14 @@ public class Movie {
 
     public void setDirector(String director) {
         this.director = director;
+    }
+
+    public String getActor() {
+        return actor;
+    }
+
+    public void setActor(String actor) {
+        this.actor = actor;
     }
 
     public String getDescription() {
@@ -96,6 +105,7 @@ public class Movie {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", director='" + director + '\'' +
+                ", actor='" + actor + '\'' +
                 ", description='" + description + '\'' +
                 ", year=" + year +
                 ", category=" + category +
