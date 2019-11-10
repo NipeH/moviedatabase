@@ -4,6 +4,8 @@
       xmlns="http://www.w3.org/1999/html"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+
+
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -15,31 +17,34 @@
 
 
 <h1>Nile's Top 10 Movies</h1>
+<!--<div>
+<img src="https://cdn.shopify.com/s/files/1/1119/4994/products/0_a123e47b-c8f1-4662-b50d-a7bc80c38d1c_grande.jpg?v=1527192513" alt="Say what again">
+</div>-->
+<div class="col-md-4">
 
+
+</div>
 
 
 <div class="col-md-4">
-
-</div>
-<div>
-<img src="https://thumbs.gfycat.com/WellinformedAssuredBird-mobile.mp4" alt="Say what again gif">
-</div>
-<div class="col-md-4">
-    <h3 th:inline="text">Welcome to the Moviedatabase, [[${#httpServletRequest.remoteUser}]] !</h3>
+    <h3 th:inline="text">Welcome to the Moviedatabase, [[${#httpServletRequest.remoteUser}]]!</h3>
+    <td sec:authorize="hasAuthority('USER')"><p>Only Admin can add or delete movies.</p></td>
 </div>
 <div class="col-md-4" style="padding:20px 0">
-
-
-    <td sec:authorize="hasAuthority('USER')"><a>Only Admin can add or delete movies.</a></td>
-
-</div>
-</br>
-</br>
-
 
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Sign Out" class="btn btn-danger"/>
     </form>
+
+
+</div>
+
+
+</br>
+</br>
+
+
+
 </div>
 </br>
 </br>

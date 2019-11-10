@@ -10,10 +10,15 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 </head>
 <body>
 
+
+<h1>Moviedatabase login</h1>
+
 <div th:if="${param.error}">Invalid username and password.</div>
 <div th:if="${param.logout}">You have been logged out.</div>
 
 <form th:action="@{/login}" method="post">
+    <p>login as normal user: user/nakkimuki</p>
+    </br>
     <div><label>Username: <input type="text" name="username"/></label></div>
     <div><label>Password: <input type="password" name="password"/></label></div>
     <div><input type="submit" value="Sign in"/></div>
