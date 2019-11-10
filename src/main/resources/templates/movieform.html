@@ -27,19 +27,25 @@
 
         <tr>
 
-            <th><p>Title: <input type="text" th:field="${movie.title}"/></p></th>
-            <th><p>Director: <input type="text" th:field="${movie.director}"/></p></th>
-            <th><p>Actor: <input type="text" th:field="${movie.actor}"/></p></th>
-            <th><p>Description: <input type="text" th:field="${movie.description}"/></p></th>
-            <th><p>Year: <input type="text" th:field="${movie.year}"/></p></th>
+            <td><p>Title: <input type="text" th:field="${movie.title}"/></p></td>
+            <td><p>Director: <input type="text" th:field="${movie.director}"/></p></td>
+            <td><p>Actor: <input type="text" th:field="${movie.actor}"/></p></td>
+            <td><p>Description: <input type="text" th:field="${movie.description}"/></p></td>
+            <td><p>Year: <input type="text" th:field="${movie.year}"/></p></td>
 
 
 
-            <th></th>
+
+
 
         </tr>
 
+
+
+
     </table>
+
+    <p>Select category</p>
 
     <select id="categorylist" th:field="*{category}"
             class="form-control">
