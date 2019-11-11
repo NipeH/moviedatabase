@@ -34,6 +34,11 @@ public class MovieController {
         return "login";
     }
 
+    @RequestMapping(value="/returning")
+    public String returning(){
+        return "redirect:/movielist";
+    }
+
 
 
     // Movie database LIST
@@ -82,7 +87,7 @@ public class MovieController {
     }
 
     @RequestMapping(value="/deletemovie/{id}", method = RequestMethod.GET)
-    public String deleteMovie(@PathVariable("id") Long movieId){
+    public String deleteMovie(@PathVariable("id") Long movieId, Model model){
         movieRepository.deleteById(movieId);
         return "redirect:../movielist";
     }
@@ -93,6 +98,14 @@ public class MovieController {
         return "redirect:/movielist";
     }
 
+    /*
+
+     // Delete student
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteStudent(@PathVariable("id") Long studentId, Model model) {
+    	repository.deleteById(studentId);
+        return "redirect:../studentlist";
+     */
 
 
 

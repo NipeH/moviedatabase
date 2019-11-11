@@ -34,10 +34,6 @@
             <td><p>Year: <input type="text" th:field="${movie.year}"/></p></td>
 
 
-
-
-
-
         </tr>
 
 
@@ -59,9 +55,21 @@
 
     <input type="submit" value="Submit"/>
     <input type="reset" value="Reset"/>
+
 </form>
 
+
 </table>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<form th:action="@{/returning}" method="post">
+    <input type="submit" value="Return" class="btn-default"/>
+</form>
 
 </body>
 </html>
