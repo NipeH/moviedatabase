@@ -68,7 +68,7 @@
         <td th:text="${movie.description}">Description</td>
         <td th:text="${movie.year}">Year</td>
         <td th:text="${movie.category.name}">category</td>
-               <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${movie.id})}" class="btn btn-danger">Delete</a></td>
+               <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletemovie/{id}(id=${movie.id})}" class="btn btn-danger">Delete</a></td>
 
     </tr>
 
