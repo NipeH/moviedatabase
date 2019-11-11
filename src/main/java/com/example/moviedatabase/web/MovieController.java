@@ -6,6 +6,7 @@ import com.example.moviedatabase.domain.CategoryRepository;
 import com.example.moviedatabase.domain.Movie;
 import com.example.moviedatabase.domain.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +70,7 @@ public class MovieController {
 
 
     // Moviedatabase FORM
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value="/newmovie", method = RequestMethod.GET)
     public String getMovieForm(Model model) {
         model.addAttribute("movie", new Movie()); // creates an empty movie class
@@ -85,9 +86,10 @@ public class MovieController {
         return "redirect:/movielist";
 
     }
-
+    // DELETE Ei toimi jostain syystä
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value="/deletemovie/{id}", method = RequestMethod.GET)
-    public String deleteMovie(@PathVariable("id") Long movieId, Model model){
+    public String deleteMovie(@PathVariable("id") Long movieId){
         movieRepository.deleteById(movieId);
         return "redirect:../movielist";
     }
